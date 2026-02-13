@@ -1,0 +1,183 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>User Profile</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- bootstrap css -->
+      <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+      <!-- style css -->
+      <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+      <!-- Responsive-->
+      <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+      <!-- fevicon -->
+      <link rel="icon" href="{% static 'images/fevicon.png' %}" type="image/gif" />
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" href="{% static 'css/jquery.mCustomScrollbar.min.css' %}">
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <!-- fonts -->
+      <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Righteous&display=swap" rel="stylesheet">
+      <!-- owl stylesheets --> 
+      <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+      <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+   </head>
+   <body>
+      <!-- header section start -->
+      <div class="header_section" style="background-color: #0c0116 !important; background-image: none !important;">
+         <div class="header_main" style="background-color: #0c0116 !important; background-image: none !important;">
+            <div class="mobile_menu">
+               <nav class="navbar navbar-expand-lg navbar-dark">
+                  <div class="logo_mobile"><a href="{% url 'index' %}"></a></div>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarNav">
+                     <ul class="navbar-nav">
+                        <li class="nav-item">
+                           <a class="nav-link" href="{% url 'udashboard' %}">udashboard</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="{% url 'prediction' %}">Prediction</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="{% url 'user_profile' %}">Admin</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link " href="{% url 'index' %}">Logout</a>
+                        </li>
+                        
+                     </ul>
+                  </div>
+               </nav>
+            </div>
+            <div class="container-fluid">
+                <!-- <div class="logo"><a href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}"></a></div> -->
+                <div class="menu_main">
+                   <ul>
+                      <li><a href="{% url 'udashboard' %}">User Dashboard</a></li>
+                      <li><a href="{% url 'prediction' %}">Prediction</a></li>
+                      <li class="active"><a href="{% url 'user_profile' %}">Profile</a></li>
+                      <li><a href="{% url 'index' %}">Logout</a></li>
+                      
+                   </ul>
+                </div>
+             </div>
+          </div>
+       </div>
+      <!-- header section end -->
+      <!-- contact section start -->
+       <!-- profile section start -->
+       <div class="contact_section layout_padding" style="padding-top: 120px; padding-bottom: 80px; background-color: #f8f9fa;">
+          <div class="container">
+             <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                   <!-- Profile Image Card -->
+                   <div class="col-lg-4 mb-4">
+                      <div class="card shadow-lg border-0" style="border-radius: 20px; overflow: hidden; background: #ffffff;">
+                         <div class="card-body text-center p-5">
+                            <div style="position: relative; display: inline-block;">
+                               <img style="height: 180px; width: 180px; object-fit: cover; border-radius: 50%; border: 5px solid #f0f0f0; box-shadow: 0 5px 15px rgba(0,0,0,0.1);" src="/media/{{i.user_profile}}" alt="Profile Image" />
+                            </div>
+                            <h3 class="mt-4" style="font-weight: 700; color: #0c0116;">{{i.fname}} {{i.lname}}</h3>
+                            <p class="text-muted mb-4">{{i.email}}</p>
+                            
+                            <label id="uploadLabel" for="fileInput" class="btn btn-primary" style="display: none; background: linear-gradient(to right, #0c0116, #2b2278); border: none; border-radius: 30px; padding: 12px 30px; font-weight: 600; box-shadow: 0 4px 10px rgba(43, 34, 120, 0.3); transition: all 0.3s;">
+                               <i class="fa fa-camera" style="margin-right: 8px;"></i> Change Photo
+                            </label>
+                            <input id="fileInput" type="file" name="image" style="display: none;">
+                         </div>
+                      </div>
+                   </div>
+                   
+                   <!-- Profile Details Card -->
+                   <div class="col-lg-8">
+                      <div class="card shadow-lg border-0" style="border-radius: 20px; overflow: hidden; background: #ffffff;">
+                         <div class="card-header bg-white border-0 pt-4 px-5">
+                            <h4 style="font-weight: 700; color: #2b2278; margin-bottom: 0;">Account Details</h4>
+                         </div>
+                         <div class="card-body p-5 pt-3">
+                            <div class="row g-4">
+                               <div class="col-md-6 mb-3">
+                                  <label style="font-weight: 600; font-size: 13px; color: #555; margin-bottom: 5px;">First Name</label>
+                                  <input class="form-control profile-input" type="text" name="f_name" value="{{i.fname}}" readonly style="height: 50px; border-radius: 10px; border: 1px solid #e0e0e0; background-color: #f9f9f9;">
+                               </div>
+                               <div class="col-md-6 mb-3">
+                                  <label style="font-weight: 600; font-size: 13px; color: #555; margin-bottom: 5px;">Last Name</label>
+                                  <input class="form-control profile-input" type="text" name="l_name" value="{{i.lname}}" readonly style="height: 50px; border-radius: 10px; border: 1px solid #e0e0e0; background-color: #f9f9f9;">
+                               </div>
+                               <div class="col-md-6 mb-3">
+                                  <label style="font-weight: 600; font-size: 13px; color: #555; margin-bottom: 5px;">Email Address</label>
+                                  <input class="form-control profile-input" type="email" name="email_address" value="{{i.email}}" readonly style="height: 50px; border-radius: 10px; border: 1px solid #e0e0e0; background-color: #f9f9f9;">
+                               </div>
+                               <div class="col-md-6 mb-3">
+                                  <label style="font-weight: 600; font-size: 13px; color: #555; margin-bottom: 5px;">Phone Number</label>
+                                  <input class="form-control profile-input" type="text" name="Phone_number" value="{{i.mobile}}" readonly style="height: 50px; border-radius: 10px; border: 1px solid #e0e0e0; background-color: #f9f9f9;">
+                               </div>
+                               <div class="col-md-6 mb-3">
+                                  <label style="font-weight: 600; font-size: 13px; color: #555; margin-bottom: 5px;">Age</label>
+                                  <input class="form-control profile-input" type="number" name="age" value="{{i.age}}" readonly style="height: 50px; border-radius: 10px; border: 1px solid #e0e0e0; background-color: #f9f9f9;">
+                               </div>
+                               <div class="col-md-6 mb-3">
+                                  <label style="font-weight: 600; font-size: 13px; color: #555; margin-bottom: 5px;">Password</label>
+                                  <input class="form-control profile-input" type="text" name="pass" value="{{i.password}}" readonly style="height: 50px; border-radius: 10px; border: 1px solid #e0e0e0; background-color: #f9f9f9;">
+                               </div>
+                            </div>
+                            
+                            <div class="mt-4 text-end">
+                               <button id="actionBtn" class="btn btn-primary" type="button" onclick="enableEditMode(event)" style="background: linear-gradient(to right, #0c0116, #2b2278); border: none; padding: 12px 35px; border-radius: 30px; font-weight: 700; min-width: 160px; box-shadow: 0 4px 15px rgba(43, 34, 120, 0.2); transition: all 0.3s;">Edit Profile</button>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </form>
+          </div>
+       </div>
+      <!-- contact section end -->
+      {% include 'footer.html' %}
+      <!-- Javascript files-->
+      <script src="{% static 'js/jquery.min.js' %}"></script>
+      <script src="{% static 'js/popper.min.js' %}"></script>
+      <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+      <script src="{% static 'js/jquery-3.0.0.min.js' %}"></script>
+      <script src="{% static 'js/plugin.js' %}"></script>
+      <!-- sidebar -->
+      <script src="{% static 'js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+      <script src="{% static 'js/custom.js' %}"></script>
+      <!-- javascript --> 
+      <script src="{% static 'js/owl.carousel.js' %}"></script>
+      <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+      <script>
+         function enableEditMode(event) {
+            if (event) event.preventDefault();
+            // Unlock all inputs
+            var inputs = document.getElementsByClassName('profile-input');
+            for(var i = 0; i < inputs.length; i++) {
+               inputs[i].removeAttribute('readonly');
+            }
+            
+            // Show upload button
+            document.getElementById('uploadLabel').style.display = 'inline-block';
+            
+            // Change button to Save
+            var btn = document.getElementById('actionBtn');
+            btn.innerHTML = 'Save Profile';
+            btn.type = 'submit';
+            btn.removeAttribute('onclick');
+         }
+      </script>
+   </body>
+</html>

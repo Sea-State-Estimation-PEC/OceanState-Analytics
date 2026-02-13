@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+
+# Virtual Environment
+start/
+venv/
+env/
+
+# IDEs
+.vscode/
+.idea/
+
+# Windows / Installers
+*.exe
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Large Data & Models
+*.npy
+*.pth
+*.h5
+*.pkl
+Sea_dataset/Sea_dataset/

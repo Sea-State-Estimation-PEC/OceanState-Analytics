@@ -1,0 +1,51 @@
+{% load static %}
+<!-- footer section start -->
+<div class="footer_section layout_padding">
+   <div class="container">
+      <!-- <div class="input_btn_main">
+         <input type="text" class="mail_text" placeholder="Enter your email" name="Enter your email">
+         <div class="subscribe_bt"><a href="#">Subscribe</a></div>
+      </div> -->
+      <div class="location_main" style="display: flex !important; flex-direction: column !important; align-items: center !important; gap: 12px !important; width: 100% !important; padding-top: 30px !important; margin: 0 auto !important;">
+         <div style="display: flex !important; flex-direction: row !important; gap: 15px !important; align-items: center !important;">
+            <a href="tel:{{ contact_data.phone }}" style="color: #fff !important; text-decoration: none !important; display: flex !important; align-items: center !important; white-space: nowrap !important;">
+               <img src="{% static 'images/call-icon.png' %}" style="width: 18px !important; margin-right: 5px !important;">{{ contact_data.phone }}
+            </a>
+            <span style="color: #555 !important;">|</span>
+            <a href="mailto:{{ contact_data.email }}" style="color: #fff !important; text-decoration: none !important; display: flex !important; align-items: center !important; white-space: nowrap !important;">
+               <img src="{% static 'images/mail-icon.png' %}" style="width: 18px !important; margin-right: 5px !important;">{{ contact_data.email }}
+            </a>
+         </div>
+        
+      </div>
+      <div class="social_icon">
+         <ul>
+            {% if contact_data.linkedin %}
+            <li><a href="{{ contact_data.linkedin }}"><img src="{% static 'images/linkedin-icon.png' %}" alt="LinkedIn" style="width: 20px; height: 20px;"></a></li>
+            {% endif %}
+            {% if contact_data.github %}
+            <li><a href="{{ contact_data.github }}"><img src="{% static 'images/github-icon.png' %}" alt="GitHub" style="width: 20px; height: 20px;"></a></li>
+            {% endif %}
+            {% if contact_data.leetcode %}
+            <li><a href="{{ contact_data.leetcode }}"><img src="{% static 'images/leetcode-icon.png' %}" alt="LeetCode" style="width: 20px; height: 20px;"></a></li>
+            {% endif %}
+            {% if contact_data.hackerrank %}
+            <li><a href="{{ contact_data.hackerrank }}"><img src="{% static 'images/hackerrank-icon.png' %}" alt="HackerRank" style="width: 20px; height: 20px;"></a></li>
+            {% endif %}
+         </ul>
+      </div>
+      
+   </div>
+    <div style="color: rgba(255, 255, 255, 0.6) !important; font-size: 13px !important; text-align: center !important;  line-height: 1.4 !important; font-style: italic !important;">
+            {{ contact_data.copyright }}
+         </div>
+</div>
+<!-- footer section end -->
+<!-- copyright section start -->
+<!-- <div class="copyright_section">
+   <div class="container">
+      <p class="copyright_text">{{ contact_data.copyright }}</p>
+   </div>
+</div> -->
+<!-- copyright section end -->
+
